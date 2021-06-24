@@ -3,7 +3,7 @@ import requests
 from flask import Flask, render_template, session, request, redirect, url_for
 from flask_session import Session  # https://pythonhosted.org/Flask-Session
 import msal
-import app_config
+import app_MS_config as app_config
 
 
 app = Flask(__name__)
@@ -60,6 +60,7 @@ def graphcall():
         app_config.ENDPOINT,
         headers={'Authorization': 'Bearer ' + token['access_token']},
         ).json()
+    
     return render_template('display.html', result=graph_data)
 
 
